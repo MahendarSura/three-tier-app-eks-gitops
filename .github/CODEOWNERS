@@ -1,0 +1,20 @@
+# CODEOWNERS
+
+# All repository files
+*               @MahendarSura
+
+
+# Kubernetes files
+/kubernetes/    @MahendarSura
+
+
+# Terraform files
+/terraform/     @MahendarSura
+
+
+# Docker files
+/docker/        @MahendarSura
+
+
+# GitHub Actions
+/.github/       @MahendarSura
