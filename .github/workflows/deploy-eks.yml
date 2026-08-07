@@ -1,0 +1,27 @@
+name: Deploy EKS
+
+on:
+
+  workflow_run:
+    workflows:
+      - Docker Build Push
+    types:
+      - completed
+
+
+jobs:
+
+ deploy:
+
+  runs-on: ubuntu-latest
+
+
+  steps:
+
+  - name: Checkout
+    uses: actions/checkout@v4
+
+
+  - name: Deploy using ArgoCD
+    run: |
+      echo "Deployment triggered through ArgoCD"

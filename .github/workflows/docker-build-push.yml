@@ -1,0 +1,26 @@
+name: Docker Build Push
+
+on:
+
+  push:
+    branches:
+      - main
+
+
+jobs:
+
+  docker:
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+
+    - name: Docker Build
+      run: |
+        docker build -f docker/Dockerfile.backend .
+        docker build -f docker/Dockerfile.frontend .
