@@ -1,0 +1,38 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager.monitoring.svc.cluster.local:9093
+
+
+rule_files:
+  - "alerts.yaml"
+
+
+scrape_configs:
+
+  - job_name: "kubernetes-api"
+
+    kubernetes_sd_configs:
+      - role: endpoints
+
+    relabel_configs:
+      - source_labels:
+          - __meta_kubernetes_service_label_app
+        action: keep
+        regex: kubernetes
+
+
+  - job_name: "kubernetes-nodes"
+
+    kubernetes_sd_configs:
+      - role: node
+
+
+
+ 
