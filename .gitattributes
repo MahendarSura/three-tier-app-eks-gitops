@@ -1,0 +1,75 @@
+# ==============================
+# Default Line Ending
+# ==============================
+
+* text=auto eol=lf
+
+
+# ==============================
+# Shell Scripts
+# Keep Linux compatible line endings
+# ==============================
+
+*.sh text eol=lf
+
+
+# ==============================
+# Images & Binary Files
+# ==============================
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+
+
+# ==============================
+# Documentation
+# GitHub Linguist classification
+# ==============================
+
+docs/** linguist-documentation=true
+
+
+# ==============================
+# Kubernetes Manifests
+# ==============================
+
+k8s/** linguist-language=YAML
+
+
+# ==============================
+# Terraform Files
+# ==============================
+
+*.tf linguist-language=HCL
+
+
+# ==============================
+# Docker Configuration
+# ==============================
+
+Dockerfile linguist-language=Dockerfile
+
+
+# ==============================
+# GitHub Actions Workflows
+# ==============================
+
+.github/workflows/** linguist-language=YAML
+
+
+# ==============================
+# Vendor / Generated Files
+# ==============================
+
+vendor/** linguist-vendored=true
+
+
+# ==============================
+# Lock Files
+# ==============================
+
+package-lock.json linguist-generated=true
+yarn.lock linguist-generated=true
