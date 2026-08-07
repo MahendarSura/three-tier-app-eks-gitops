@@ -1,0 +1,54 @@
+name: Trivy Security Scan
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+
+  security-scan:
+
+    name: Scan Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+
+      # Install Trivy
+      - name: Install Trivy
+        uses: aquasecurity/setup-trivy@v0.2.2
+
+
+      # Build Docker Image
+      - name: Build Docker Image
+        run: |
+          docker build \
+          -t three-tier-app:${{ github.sha }} \
+          .
+
+
+      # Scan Docker Image
+      - name: Scan Docker Image
+        run: |
+          trivy image \
+          --severity HIGH,CRITICAL \
+          --exit-code 1 \
+          three-tier-app:${{ github.sha }}
+
+
+      # Scan Kubernetes YAML files
+      - name: Scan Kubernetes manifests
+        run: |
+          trivy config \
+          --severity HIGH,CRITICAL \
+          kubernetes/
