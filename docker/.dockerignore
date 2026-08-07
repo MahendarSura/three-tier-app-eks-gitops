@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment files
+.env
+.env.*
+
+# Git files
+.git
+.gitignore
+
+# Logs
+*.log
+logs/
+
+# Test files
+coverage/
+.nyc_output/
+
+# Build output
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Documentation
+README.md
+CHANGELOG.md
+
+# CI/CD files
+.github/
+
+# Infrastructure files (not required inside application image)
+terraform/
+kubernetes/
+helm/
+argocd/
+monitoring/
+security/
