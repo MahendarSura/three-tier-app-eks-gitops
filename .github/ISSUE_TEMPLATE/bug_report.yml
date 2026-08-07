@@ -1,0 +1,77 @@
+name: Bug Report
+description: Report a problem with the application, infrastructure, or deployment
+title: "[BUG]: "
+labels:
+  - bug
+  - needs-triage
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue.
+        Please provide complete details so the issue can be investigated.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Describe the issue and expected behavior.
+      placeholder: |
+        Example:
+        Application pod is restarting continuously after deployment.
+    validations:
+      required: true
+
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps To Reproduce
+      description: Provide steps to reproduce the issue.
+      placeholder: |
+        1. Deploy application to EKS
+        2. Access application URL
+        3. Observe the error
+    validations:
+      required: true
+
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: Where did the issue occur?
+      options:
+        - Local Docker Environment
+        - QA Kubernetes Environment
+        - AWS EKS Production Environment
+    validations:
+      required: true
+
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Output
+      description: Add application, Docker, Kubernetes, or CI/CD logs.
+      render: shell
+
+
+  - type: textarea
+    id: deployment
+    attributes:
+      label: Deployment Details
+      description: Mention recent changes, image tag, or deployment information.
+      placeholder: |
+        Docker image:
+        Kubernetes namespace:
+        Commit ID:
+
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Add screenshots or any other useful details.
