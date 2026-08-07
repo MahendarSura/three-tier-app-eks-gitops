@@ -1,0 +1,15 @@
+frontend:
+  replicaCount: 2
+  image:
+    repository: three-tier-frontend
+    tag: latest
+  service:
+    port: 80
+
+backend:
+  replicaCount: 2
+  image:
+    repository: three-tier-backend
+    tag: latest
+  service:
+    port: 5000
