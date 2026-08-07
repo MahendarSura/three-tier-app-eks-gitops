@@ -12,39 +12,41 @@ The frontend is responsible for:
 
 # 🏗️ Frontend Architecture
 
-         User
-          |
-          |
-    Frontend Client
-    HTML + CSS + JS
-          |
-          |
-    Backend API
-    Node.js Express
-          |
-          |
-      MySQL Database
+```
+             User
+              |
+              |
+       Frontend Client
+        HTML + CSS + JS
+              |
+              |
+        Backend API
+       Node.js Express
+              |
+              |
+        MySQL Database
+```
 
-      
 
 # 📂 Folder Structure
 
+```
 client/
 
 ├── index.html
-│ └── Main application page
+│   └── Main application page
 │
 ├── css/
-│ └── style.css
-│ └── UI design and styling
+│   └── style.css
+│       └── UI design and styling
 │
 ├── js/
-│ └── app.js
-│ └── Frontend logic and API communication
+│   └── app.js
+│       └── Frontend logic and API communication
 │
 └── README.md
-└── Frontend documentation
-
+    └── Frontend documentation
+```
 
 
 # 🎨 UI Styling
@@ -53,8 +55,9 @@ Frontend styling is managed using CSS.
 
 ## CSS File
 
+```bash
 css/style.css
-
+```
 
 Contains:
 
@@ -67,7 +70,7 @@ Contains:
 - Responsive design
 
 
-Example:
+## Example CSS
 
 ```css
 body {
@@ -107,14 +110,24 @@ button {
     color: white;
 
 }
-✨ Font & Design Guidelines
-Font Family
+```
+
+
+# ✨ Font & Design Guidelines
+
+## Font Family
 
 Used fonts:
 
+```
 Arial
 Sans-serif
-Font Sizes
+```
+
+
+## Font Sizes
+
+```
 Main Heading (h1)
 
 32px
@@ -133,7 +146,12 @@ Normal Text
 Small Text
 
 14px
-Colors
+```
+
+
+## Colors
+
+```
 Primary Color
 
 #2563eb
@@ -152,30 +170,39 @@ Text Color
 Button Color
 
 #2563eb
-UI Style
+```
+
+
+## UI Style
 
 Design follows:
 
-Clean layout
-Simple dashboard style
-Responsive design
-Modern card-based components
-User-friendly interface
-⚙️ JavaScript Functionality
+- Clean layout
+- Simple dashboard style
+- Responsive design
+- Modern card-based components
+- User-friendly interface
+
+
+# ⚙️ JavaScript Functionality
 
 Frontend logic is handled by:
 
+```bash
 js/app.js
+```
 
 Responsibilities:
 
-Backend API calls
-Data fetching
-Button actions
-Dynamic UI updates
+- Backend API calls
+- Data fetching
+- Button actions
+- Dynamic UI updates
 
-Example:
 
+## Example
+
+```javascript
 fetch("http://localhost:5000/api/users")
 
 .then(response => response.json())
@@ -185,27 +212,42 @@ fetch("http://localhost:5000/api/users")
     console.log(data);
 
 });
-🚀 Running Frontend Locally
+```
+
+
+# 🚀 Running Frontend Locally
 
 Clone repository:
 
+```bash
 git clone <repository-url>
 
 cd src/client
+```
+
 
 Run frontend:
 
+```bash
 python3 -m http.server 8080
+```
+
 
 Open browser:
 
+```
 http://localhost:8080
-🐳 Docker Deployment
+```
+
+
+# 🐳 Docker Deployment
 
 Frontend is containerized using Docker.
 
-Dockerfile:
 
+## Dockerfile
+
+```dockerfile
 FROM nginx:alpine
 
 COPY . /usr/share/nginx/html
@@ -213,20 +255,30 @@ COPY . /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx","-g","daemon off;"]
+```
+
 
 Build image:
 
+```bash
 docker build -t frontend-app .
+```
+
 
 Run container:
 
+```bash
 docker run -p 8080:80 frontend-app
-☸️ Kubernetes Deployment
+```
+
+
+# ☸️ Kubernetes Deployment
 
 Frontend runs as a Kubernetes workload.
 
-Deployment:
+Deployment flow:
 
+```
 Frontend Pod
 
        |
@@ -240,7 +292,10 @@ Ingress
        |
 
 AWS Load Balancer
-🔐 Security Practices
+```
+
+
+# 🔐 Security Practices
 
 Implemented:
 
@@ -254,26 +309,22 @@ Implemented:
 
 ✅ Non-root container execution
 
-📌 Future Improvements
-Convert to React application
-Add component-based architecture
-Add frontend testing
-Add CI/CD automation
-Add performance optimization
-📚 Learning
+
+# 📌 Future Improvements
+
+- Convert to React application
+- Add component-based architecture
+- Add frontend testing
+- Add CI/CD automation
+- Add performance optimization
+
+
+# 📚 Learning
 
 This frontend module helped understand:
 
-Web application structure
-CSS styling practices
-API integration
-Docker containerization
-Kubernetes deployment workflow
-
-Idi mee root `README.md` style ki match avutundi:
-- `#` headings
-- emojis
-- architecture diagrams
-- folder trees
-- code examples
-- DevOps documentation style.
+- Web application structure
+- CSS styling practices
+- API integration
+- Docker containerization
+- Kubernetes deployment workflow
