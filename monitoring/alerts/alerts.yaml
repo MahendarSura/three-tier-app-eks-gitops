@@ -1,0 +1,67 @@
+groups:
+  - name: kubernetes-alerts
+    interval: 30s
+
+    rules:
+
+      - alert: HighPodCPUUsage
+        expr: |
+          sum(rate(container_cpu_usage_seconds_total[5m])) by (pod)
+          > 0.8
+
+        for: 5m
+
+        labels:
+          severity: warning
+
+        annotations:
+          summary: "High CPU usage detected"
+          description: "Pod {{ $labels.pod }} is using high CPU for more than 5 minutes."
+
+
+      - alert: PodRestartingFrequently
+        expr: |
+          increase(kube_pod_container_status_restarts_total[15m]) > 3
+
+        for: 5m
+
+        labels:
+          severity: critical
+
+        annotations:
+          summary: "Container restarting frequently"
+          description: "Pod {{ $labels.pod }} restarted multiple times."
+
+
+      - alert: KubernetesNodeNotReady
+        expr: |
+          kube_node_status_condition{
+            condition="Ready",
+            status="true"
+          } == 0
+
+        for: 10m
+
+        labels:
+          severity: critical
+
+        annotations:
+          summary: "Kubernetes node not ready"
+          description: "Node {{ $labels.node }} is not ready."
+
+
+      - alert: HighMemoryUsage
+        expr: |
+          (1 - (
+            node_memory_MemAvailable_bytes /
+            node_memory_MemTotal_bytes
+          )) * 100 > 85
+
+        for: 5m
+
+        labels:
+          severity: warning
+
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 85%."
