@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: three-tier-project
+  namespace: argocd
+
+spec:
+
+  description: Three Tier Application GitOps Project
+
+  sourceRepos:
+  - '*'
+
+  destinations:
+  - namespace: default
+    server: https://kubernetes.default.svc
+
